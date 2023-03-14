@@ -12,7 +12,7 @@ session_start();
 
         require_once ('BD/conection.php');
 
-        $consulta = mysqli_query($conexion,"select * from usuario where username='$nombre'  AND password=aes_encrypt('root' ,'$password')");
+        $consulta = mysqli_query($conexion,"select ID from usuario where username='$nombre'  AND password=aes_encrypt('root' ,'$password')");
 
         if(!$consulta){ 
             // echo "Usuario no existe " . $nombre . " " . $password. " o hubo un error " . 
@@ -21,9 +21,9 @@ session_start();
             exit;
         } 
         if($user = mysqli_fetch_assoc($consulta)) {
-            header("Location: index.php");
+            header("Location: panelMaestro.php?ID=".$user['ID']);
             exit;
-        } else {
+        }else {
             header("Location: login.php");
         }
     }

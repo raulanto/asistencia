@@ -16,12 +16,13 @@
                     <a href="#" class="bg-gray-900 text-white rounded-md p-3 text-xl font-bold hover:bg-gray-700 hover:text-white	"
                         aria-current="page">Sistema de Asistencia </a>
                     <a href="login.php"
-                        class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md p-3 text-lg font-medium">Inicio</a>
+                        class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md p-3 text-lg font-medium">Login</a>
                 </div>
             </div>
         </nav>
     </header>
 
+    
     <div class="flex justify-center items-center bg-gradient-to-r mb-3 h-32 from-green-400 to-blue-500 m-0   ">
         <h1 class="text-6xl  font-bold  text-white  text-center font-sans ">Sistema Asistencia</h1>
    </div>
