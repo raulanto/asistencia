@@ -22,23 +22,22 @@
     </header>
     <!--login -->
     <main class="flex justify-center ">
-        <form action="validar.php" class="flex  justify-center w-96 h-80 my-4 bg-gray-800 rounded-xl border shadow  border-white border-solid " method="POST" name='login'>
+        <form action="validar.php" class="flex  justify-center w-96 h-80 my-4 bg-gray-800 rounded border   border-slate-600 border-solid  shadow-lg" method="POST" name='login'>
 
             <section class="p-2 m-2 ">
-                <h1 class="text-white text-4xl text-center m-2 font-bold">Inicio de Sesion</h1>
-
+                    <h1 class="text-white text-4xl text-center m-6 font-bold rounded-md " >Inicio de Sesion</h1>
                 <div class="flex justify-between ">
-                    <label class="text-white  " for="username" >Usuario</label>
+                    <label class="text-white text-lg  " for="username" >Usuario</label>
                     <input id="username" type="text" class="mx-2 m-1 rounded-md px-2" name="username" required="true">
                 </div>
 
                 <div class="flex justify-between ">
-                    <label class="text-white " for="password">Contraseña</label>
+                    <label class="text-white text-lg" for="password">Contraseña</label>
                     <input type="password" id="password" class=" mx-2 m-1 rounded-md px-2" name="password" required="true">
                 </div>
             
                 <div class="flex justify-center items-center">
-                    <button name="login" type="submit" class="bg-purple-800 w-36	hover:bg-purple-500 text-white rounded-xl px-3 py-2 text-sm font-medium m-3" onclick="">Iniciar</button>
+                    <button name="login" type="submit" class="bg-purple-800 w-36 text-lg	hover:bg-purple-500 text-white rounded-xl  py-2  font-medium m-3" onclick="">Iniciar</button>
                 </div>
             </section>
 

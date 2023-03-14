@@ -12,8 +12,7 @@ session_start();
 
         require_once ('BD/conection.php');
 
-        $consulta = mysqli_query ($conexion, "SELECT * FROM usuario WHERE username = '$nombre' AND password = '$password'");  
-
+        $consulta = mysqli_query($conexion,"select * from usuario where username='$nombre'  AND password=aes_encrypt('root' ,'$password')");
 
         if(!$consulta){ 
             // echo "Usuario no existe " . $nombre . " " . $password. " o hubo un error " . 
