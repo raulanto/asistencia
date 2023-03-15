@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,6 +20,9 @@
             </div>
         </nav>
     </header>
+
+
+
     <!--login -->
     <main class="flex justify-center ">
         <form action="validar.php" class="flex  justify-center w-96 h-80 my-4 bg-gray-800 rounded border   border-slate-600 border-solid  shadow-lg" method="POST" name='login'>
@@ -42,6 +45,19 @@
             </section>
 
         </form>
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            $CORRECTO=$_GET['incorrecto'];
+        
+            //datos del usuario
+            require_once('validar.php');
+            if ($CORRECTO==TRUE) {
+                echo '<script>alert("Usuario o Contraseña Inocorrecta")</script>';
+            }
+            # code...
+        }
+
+?>
     </main>
     
     <footer class="flex justify-center m-auto bg-gray-800 text-center h-16 fixed bottom-0 left-0 right-0  ">

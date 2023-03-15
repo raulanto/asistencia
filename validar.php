@@ -1,5 +1,6 @@
 <?php
 session_start();
+   
 
     if (isset($_SESSION['username'])) {
         header("Location: login.php");
@@ -24,7 +25,8 @@ session_start();
             header("Location: panelMaestro.php?ID=".$user['ID']);
             exit;
         }else {
-            header("Location: login.php");
+            $incorrecto=TRUE;
+            header("Location: login.php?incorrecto=".$incorrecto);
         }
     }
 

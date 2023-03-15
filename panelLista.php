@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Grupos</title>
+    <title>Grupo</title>
 </head>
 
 <body class="bg-gray-900">
@@ -18,10 +18,8 @@
                     <a href="#"
                         class="bg-gray-900 text-white rounded-md p-3 text-xl font-bold hover:bg-gray-700 hover:text-white	"
                         aria-current="page">Sistema de Asistencia </a>
-                    <a href=""
+                    <a href="login.php"
                         class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md p-3 text-lg font-medium">Inicio</a>
-                    <a href=""
-                        class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md p-3 text-lg font-medium">Materias</a>
                 </div>
             </div>
         </nav>
@@ -31,10 +29,23 @@
     <main class="container m-auto text-center">
         <?php  
         require_once ('BD/conection.php');
-        require_once('usuario.php');
-        $ID = $_GET['ID'];
-        $results = "SELECT ID,nombre,clave FROM asistenciaalumnos.maestro WHERE fk_usuario='$ID'";
-        $resultados= mysqli_query($conexion, $results);
+        if (isset($_GET['ID'])) {
+            $ID = $_GET['ID'];
+            $results = "SELECT estudiante.ID, estudiante.matricula, estudiante.nombre, estudiante.ape_paterno, estudiante.ape_materno, materia.nombre AS 'materia' FROM listagrupo INNER JOIN grupo ON  listagrupo.fk_grupo = grupo.ID INNER JOIN materia ON  grupo.fk_materia = materia.ID INNER JOIN estudiante ON  listagrupo.fk_estudiante = estudiante.ID WHERE listagrupo.fk_grupo='$ID'";
+            $resultados= mysqli_query($conexion, $results);
+            $columna = mysqli_fetch_array($resultados);
+            echo     '<div class="">
+            <div>
+                <div scope="col"
+                    class="px-12 py-3.5 text-xl font-normal text-center rtl:text-right text-white dark:text-gray-400">
+                    '.$columna['materia'].
+                '</div>
+            </div>
+        </div>';
+        } else {
+            echo "El parámetro ID no está definido";
+        }
+
 
 
     ?>
@@ -53,41 +64,57 @@
 
                                         <th scope="col"
                                             class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Nombre
+                                            Matricula
                                         </th>
 
                                         <th scope="col"
                                             class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Clave</th>
+                                            Nombre</th>
+                                        <th scope="col"
+                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            Apellido Paterno</th>
+
+
+                                        <th scope="col"
+                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            Apellido Materno</th>
 
                                     </tr>
+
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                                     <tr>
 
                                         <?php
 while ($columna = mysqli_fetch_array($resultados)) {
-    $ID=$columna['ID'];
-    echo '<td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-        <div>
-            <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['ID'] . '</h2>
-        </div>
-    </td>
-    <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-        <div>
-            <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['nombre'] . '</h2>
-        </div>
-    </td>
-    <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-        <div>
-            <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['clave'] . '</h2>
-        </div>
-    </td>';
+            echo '<td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+                <div>
+                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['ID'] . '</h2>
+                </div>
+            </td>
+            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+                <div>
+                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['matricula'] . '</h2>
+                </div>
+            </td>
+            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+                <div>
+                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['nombre'] . '</h2>
+                </div>
+            </td>
+            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+                <div>
+                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['ape_paterno'] . '</h2>
+                </div>
+            </td>
+            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+            <div>
+                <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['ape_materno'] . '</h2>
+            </div>
+        </td>';
     ?>
                                     </tr>
                                     <?php }?>
-
-
                                 </tbody>
                             </table>
                         </div>
@@ -97,17 +124,6 @@ while ($columna = mysqli_fetch_array($resultados)) {
         </section>
 
 
-        <section class="m-5">
-            <?php
-            echo '<a href="panelMateria.php?ID=' . $ID . '" class="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-3 py-2 text-xl font-medium m-3">Materia</a>';
-
-            
-            ?>
-            <a href="panelMaestro"
-                class="bg-lime-500	hover:bg-lime-600 text-white rounded-full px-3 py-2 text-xl font-medium m-3">Asistencia</a>
-            <a href="panelAdmon "
-                class="bg-purple-500	hover:bg-purple-600 text-white rounded-full px-3 py-2 text-xl font-medium m-3">Periodo</a>
-        </section>
     </main>
 
 

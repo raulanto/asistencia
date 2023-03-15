@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+    <title>Materias</title>
 </head>
 
 <body class="bg-gray-900">
@@ -29,10 +29,17 @@
     <main class="container m-auto text-center">
         <?php  
         require_once ('BD/conection.php');
-        require_once('usuario.php');
-        $ID = $_GET['ID'];
-        $results = "SELECT ID,nombre,clave FROM asistenciaalumnos.maestro WHERE fk_usuario='$ID'";
-        $resultados= mysqli_query($conexion, $results);
+        if (isset($_GET['ID'])) {
+            $ID = $_GET['ID'];
+            $results = "select g.ID,g.clave,m.nombre as 'materia',p.nombre 'periodo',c.nombre as 'carrera' from grupo g 
+            inner join materia m on g.fk_materia=m.ID
+            inner join periodo p on g.fk_periodo=p.ID
+            inner join carrera c on g.fk_carrera=c.ID WHERE g.fk_maestro='$ID'";
+            $resultados= mysqli_query($conexion, $results);
+        } else {
+            echo "El parámetro ID no está definido";
+        }
+
 
 
     ?>
@@ -51,41 +58,67 @@
 
                                         <th scope="col"
                                             class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Nombre
+                                            clave
                                         </th>
 
                                         <th scope="col"
                                             class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Clave</th>
+                                            Materia</th>
+                                        <th scope="col"
+                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            Periodo</th>
+
+
+                                        <th scope="col"
+                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            Carrera</th>
+
+
+                                        <th scope="col"
+                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            Grupo</th>
 
                                     </tr>
+
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                                     <tr>
 
-                                    <?php
+                                        <?php
 while ($columna = mysqli_fetch_array($resultados)) {
-    $ID=$columna['ID'];
-    echo '<td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-        <div>
-            <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['ID'] . '</h2>
-        </div>
-    </td>
-    <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-        <div>
-            <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['nombre'] . '</h2>
-        </div>
-    </td>
-    <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-        <div>
-            <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['clave'] . '</h2>
-        </div>
-    </td>';
+            echo '<td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+                <div>
+                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['ID'] . '</h2>
+                </div>
+            </td>
+            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+                <div>
+                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['clave'] . '</h2>
+                </div>
+            </td>
+            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+                <div>
+                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['materia'] . '</h2>
+                </div>
+            </td>
+            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+                <div>
+                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['periodo'] . '</h2>
+                </div>
+            </td>
+            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+            <div>
+                <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['carrera'] . '</h2>
+            </div>
+        </td>
+        <td class="px-12 py-4 text-sm font-medium whitespace-nowrap">
+            <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 ">
+                <a href="panelLista.php?ID=' . $columna['ID'] . '">Lista</a>
+            </div>
+        </td>';
     ?>
-</tr>
-<?php }?>
-
-
+                                    </tr>
+                                    <?php }?>
                                 </tbody>
                             </table>
                         </div>
@@ -95,16 +128,6 @@ while ($columna = mysqli_fetch_array($resultados)) {
         </section>
 
 
-        <section class="m-5">
-            <a href="panelEstudiante.html"
-                class="bg-orange-500 	hover:bg-orange-600 text-white rounded-full  px-3 py-2 text-xl font-medium m-3">
-                Materia
-            </a>
-            <a href="panelMaestro"
-                class="bg-lime-500	hover:bg-lime-600 text-white rounded-full px-3 py-2 text-xl font-medium m-3">Asistencia</a>
-            <a href="panelAdmon "
-                class="bg-purple-500	hover:bg-purple-600 text-white rounded-full px-3 py-2 text-xl font-medium m-3">Periodo</a>
-        </section>
     </main>
 
 
