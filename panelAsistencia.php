@@ -41,10 +41,11 @@
         require_once ('BD/conection.php');
         if (isset($_GET['ID'])) {
             $ID = $_GET['ID'];
-            $results = "select g.ID,g.clave,m.nombre as 'materia',p.nombre 'periodo',c.nombre as 'carrera' from grupo g 
-            inner join materia m on g.fk_materia=m.ID
-            inner join periodo p on g.fk_periodo=p.ID
-            inner join carrera c on g.fk_carrera=c.ID WHERE g.fk_maestro='$ID'";
+            $results = "SELECT materia.nombre AS materia,estudiante.ID,CONCAT( estudiante.nombre, ' ', estudiante.ape_paterno, ' ', ape_materno ) AS nombre,COUNT( listagrupo.fk_estudiante ) AS Asistencias FROM asistencia INNER JOIN listagrupo ON asistencia.fk_listagrupo = listagrupo.ID INNER JOIN estudiante ON listagrupo.fk_estudiante = estudiante.ID INNER JOIN grupo ON listagrupo.fk_grupo = grupo.ID INNER JOIN materia ON grupo.fk_materia = materia.ID 
+        WHERE
+            grupo.ID = '$ID' 
+        GROUP BY
+            estudiante.ID";
             $resultados= mysqli_query($conexion, $results);
         } else {
             echo "El parámetro ID no está definido";
@@ -68,27 +69,10 @@
 
                                         <th scope="col"
                                             class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            clave
-                                        </th>
-
+                                            Nombre</th>
                                         <th scope="col"
                                             class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Materia</th>
-                                        <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Periodo</th>
-
-
-                                        <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Carrera</th>
-
-
-                                        <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Grupo</th>
-
-                                    </tr>
+                                            Asistencia</th>
 
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
@@ -101,31 +85,17 @@ while ($columna = mysqli_fetch_array($resultados)) {
                     <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['ID'] . '</h2>
                 </div>
             </td>
+            
             <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
                 <div>
-                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['clave'] . '</h2>
+                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['nombre'] . '</h2>
                 </div>
             </td>
             <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
                 <div>
-                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['materia'] . '</h2>
+                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['Asistencias'] . '</h2>
                 </div>
-            </td>
-            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-                <div>
-                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['periodo'] . '</h2>
-                </div>
-            </td>
-            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-            <div>
-                <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['carrera'] . '</h2>
-            </div>
-        </td>
-        <td class="px-12 py-4 text-sm font-medium whitespace-nowrap">
-            <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 ">
-                <a href="panelLista.php?ID=' . $columna['ID'] . '">Lista</a>
-            </div>
-        </td>';
+            </td>';
     ?>
                                     </tr>
                                     <?php }?>

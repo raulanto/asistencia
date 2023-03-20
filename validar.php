@@ -1,11 +1,5 @@
 <?php
 session_start();
-   
-
-    if (isset($_SESSION['username'])) {
-        header("Location: login.php");
-        exit;
-    }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nombre = $_POST['username'];
@@ -22,11 +16,11 @@ session_start();
             exit;
         } 
         if($user = mysqli_fetch_assoc($consulta)) {
+            $_SESSION['logueado'] = true;
             header("Location: panelMaestro.php?ID=".$user['ID']);
             exit;
         }else {
-            $incorrecto=TRUE;
-            header("Location: login.php?incorrecto=".$incorrecto);
+            header("Location: index.php");
         }
     }
 

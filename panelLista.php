@@ -1,3 +1,13 @@
+<?php     
+    session_start();
+    if(!$_SESSION['logueado']==true){
+        header("Location:index.php");
+    } 
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -18,8 +28,8 @@
                     <a href="#"
                         class="bg-gray-900 text-white rounded-md p-3 text-xl font-bold hover:bg-gray-700 hover:text-white	"
                         aria-current="page">Sistema de Asistencia </a>
-                    <a href="login.php"
-                        class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md p-3 text-lg font-medium">Inicio</a>
+                    <a href="close.php"
+                        class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md p-3 text-lg font-medium">Salir</a>
                 </div>
             </div>
         </nav>
@@ -37,7 +47,7 @@
             echo     '<div class="">
             <div>
                 <div scope="col"
-                    class="px-12 py-3.5 text-xl font-normal text-center rtl:text-right text-white dark:text-gray-400">
+                    class="px-12 py-3.5 text-2xl text-center rtl:text-right text-white font-bold">
                     '.$columna['materia'].
                 '</div>
             </div>
@@ -45,8 +55,6 @@
         } else {
             echo "El parámetro ID no está definido";
         }
-
-
 
     ?>
         <section class="container px-4 mx-auto">
@@ -87,7 +95,7 @@
 
                                         <?php
 while ($columna = mysqli_fetch_array($resultados)) {
-            echo '<td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+            echo '<td class="px-2 py-2 text-sm font-medium whitespace-nowrap">
                 <div>
                     <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['ID'] . '</h2>
                 </div>
@@ -127,7 +135,7 @@ while ($columna = mysqli_fetch_array($resultados)) {
     </main>
 
 
-    <footer class="flex justify-center m-auto bg-gray-800 text-center h-16 fixed bottom-0 left-0 right-0  ">
+    <footer class="flex justify-center m-auto bg-gray-800 text-center h-16  bottom-0 left-0 right-0  ">
         <div class=" self-center placeholder:p-4 text-center text-neutral-700 dark:text-neutral-200">
             <a class=" dark:text-neutral-200 " href="">© 2023 Copyright:Raulanto</a>
         </div>

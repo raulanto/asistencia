@@ -1,3 +1,12 @@
+<?php     
+    session_start();
+    if(!$_SESSION['logueado']==true){
+        header("Location:index.php");
+    } 
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -18,10 +27,9 @@
                     <a href="#"
                         class="bg-gray-900 text-white rounded-md p-3 text-xl font-bold hover:bg-gray-700 hover:text-white	"
                         aria-current="page">Sistema de Asistencia </a>
-                    <a href=""
-                        class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md p-3 text-lg font-medium">Inicio</a>
-                    <a href=""
-                        class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md p-3 text-lg font-medium">Materias</a>
+
+                        <a href="close.php"
+                        class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md p-3 text-lg font-medium">Salir</a>
                 </div>
             </div>
         </nav>
@@ -53,7 +61,7 @@
 
                                         <th scope="col"
                                             class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Nombre
+                                            Profesor
                                         </th>
 
                                         <th scope="col"
@@ -100,13 +108,8 @@ while ($columna = mysqli_fetch_array($resultados)) {
         <section class="m-5">
             <?php
             echo '<a href="panelMateria.php?ID=' . $ID . '" class="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-3 py-2 text-xl font-medium m-3">Materia</a>';
-
-            
+            echo '<a href="panelMateriasAsistencia.php?ID=' . $ID . '" class="bg-sky-500 hover:bg-sky-600 text-white rounded-full px-3 py-2 text-xl font-medium m-3">Asistencias</a>';
             ?>
-            <a href="panelMaestro"
-                class="bg-lime-500	hover:bg-lime-600 text-white rounded-full px-3 py-2 text-xl font-medium m-3">Asistencia</a>
-            <a href="panelAdmon "
-                class="bg-purple-500	hover:bg-purple-600 text-white rounded-full px-3 py-2 text-xl font-medium m-3">Periodo</a>
         </section>
     </main>
 
