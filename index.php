@@ -47,11 +47,7 @@
 
     </main>
     
-    <footer class="flex justify-center m-auto bg-gray-800 text-center h-16 fixed bottom-0 left-0 right-0  ">
-        <div class=" self-center placeholder:p-4 text-center text-neutral-700 dark:text-neutral-200">
-            <a class=" dark:text-neutral-200 " href="mostrarAlert()" >© 2023 Copyright:Raulanto</a>
-        </div>
-    </footer>
+c
 
 </body>
 </html>
