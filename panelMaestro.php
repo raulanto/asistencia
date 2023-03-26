@@ -18,24 +18,10 @@
     <title>Grupos</title>
 </head>
 
-<body class="bg-gray-900">
+<body class="bg-gray-900 max-h-max flex flex-col h-full  ">
     <!--Cabezera de la pagina -->
-    <header>
-        <nav class="bg-gray-800 ">
-            <div class="hidden sm:ml-6 sm:block p-2">
-                <div class="flex space-x-4">
-                    <a href="#"
-                        class="bg-gray-900 text-white rounded-md p-3 text-xl font-bold hover:bg-gray-700 hover:text-white	"
-                        aria-current="page">Sistema de Asistencia </a>
-
-                        <a href="close.php"
-                        class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md p-3 text-lg font-medium">Salir</a>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-
+ 
+    <?php include("cabeza.php"); ?>
     <main class="container m-auto text-center">
         <?php  
         require_once ('BD/conection.php');
@@ -114,7 +100,7 @@ while ($columna = mysqli_fetch_array($resultados)) {
     </main>
 
 
-    <footer class="flex justify-center m-auto bg-gray-800 text-center h-16 fixed bottom-0 left-0 right-0  ">
+    <footer class="flex justify-center w-full m-auto bg-gray-800 text-center h-16 flex-shrink-0"">
         <div class=" self-center placeholder:p-4 text-center text-neutral-700 dark:text-neutral-200">
             <a class=" dark:text-neutral-200 " href="https://github.com/raulanto/asistencia" >© 2023 Copyright:Raulanto</a>
         </div>

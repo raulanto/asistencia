@@ -19,12 +19,12 @@
     <title>Grupo</title>
 </head>
 
-<body class="bg-gray-900">
+<body class="bg-gray-900 max-h-full relative">
     <!--Cabezera de la pagina -->
     <header>
-        <nav class="bg-gray-800 ">
+        <nav class="bg-gray-800  ">
             <div class="hidden sm:ml-6 sm:block p-2">
-                <div class="flex space-x-4">
+                <div class="flex space-x-4  justify-between items-center">
                     <a href="#"
                         class="bg-gray-900 text-white rounded-md p-3 text-xl font-bold hover:bg-gray-700 hover:text-white	"
                         aria-current="page">Sistema de Asistencia </a>
@@ -36,7 +36,7 @@
     </header>
 
 
-    <main class="container m-auto text-center">
+    <main class="container m-auto text-center mt-3">
         <?php  
         require_once ('BD/conection.php');
         if (isset($_GET['ID'])) {
@@ -61,9 +61,9 @@
             <div class="flex flex-col mt-6">
                 <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                        <div class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
-                            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                                <thead class="bg-gray-50 dark:bg-gray-800">
+                        <div class="overflow-hidden border border-gray-700 md:rounded-lg">
+                            <table class="min-w-full divide-y divide-gray-700">
+                                <thead class="bg-gray-800">
                                     <tr>
                                         <th scope="col"
                                             class="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -135,7 +135,7 @@ while ($columna = mysqli_fetch_array($resultados)) {
     </main>
 
 
-    <footer class="flex justify-center m-auto bg-gray-800 text-center h-16 fixed bottom-0 left-0 right-0  ">
+    <footer class="flex justify-center w-full mt-3 m-auto bg-gray-800 text-center h-16  static bottom-0 left-0 ">
         <div class=" self-center placeholder:p-4 text-center text-neutral-700 dark:text-neutral-200">
             <a class=" dark:text-neutral-200 " href="https://github.com/raulanto/asistencia" >© 2023 Copyright:Raulanto</a>
         </div>

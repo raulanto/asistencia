@@ -5,16 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body{
+            background-image: url("src/fondo3.svg");
+        }
+    </style>
     <title>Login</title>
 </head>
-<body class="  bg-gray-900  ">
+<body class="bg-no-repeat bg-left-top bg-cover" >
+    <!-- Cabezera -->
     <header>
-        <nav class="bg-gray-800">
+        <nav class="fixed top-0 w-full rigth-0 bg-gray-800 ">
             <div class="hidden sm:ml-6 sm:block p-2">
                 <div class="flex space-x-4">
                     <a href="#" class="bg-gray-900 text-white rounded-md p-3 text-xl font-bold	"
                         aria-current="page">Sistema de Asistencia </a>
-
                 </div>
             </div>
         </nav>
@@ -23,35 +29,28 @@
 
 
     <!--login -->
-    <main class="flex justify-center ">
-        <form action="validar.php" class="flex  justify-center w-96 h-80 my-4 bg-gray-800 rounded border   border-slate-600 border-solid  shadow-lg" method="POST" name='login'>
-
-            <section class="p-2 m-2 ">
-                    <h1 class="text-white text-4xl text-center m-6 font-bold rounded-md " >Inicio de Sesion</h1>
-                <div class="flex justify-between ">
-                    <label class="text-white text-lg  " for="username" >Usuario</label>
-                    <input id="username" type="text" class="mx-2 m-1 rounded-md px-2" name="username" required="true">
+    <main class="">
+    <form action="validar.php" method="POST" name='login' class="flex justify-center items-center h-screen">
+            <div class="w-96 p-3 shadow-lg bg-white rounded-md">
+                <h1 class="text-4xl block text-center font-bold"><i class="fa-solid fa-user"></i> Login</h1>
+                <hr class="mt-3">
+                <div class="mt-3">
+                    <label for="username" class="block text-base mb-2">Usuario</label>
+                    <input type="text" id="username" name="username" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md" placeholder="Usuario..." />
                 </div>
-
-                <div class="flex justify-between ">
-                    <label class="text-white text-lg" for="password">Contraseña</label>
-                    <input type="password" id="password" class=" mx-2 m-1 rounded-md px-2" name="password" required="true">
+                <div class="mt-3">
+                    <label for="password" class="block text-base mb-2">Contraseña</label>
+                    <input type="password" id="password" name="password" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md" placeholder="Contraseña..." />
                 </div>
-            
-                <div class="flex justify-center items-center">
-                    <button name="login" type="submit" class="bg-purple-800 w-36 text-lg	hover:bg-purple-500 text-white rounded-xl  py-2  font-medium m-3" onclick="">Iniciar</button>
+                <div class="mt-5">
+                    <button type="submit" class="border-2 border-blue-700 bg-blue-700 text-white py-1 w-full rounded-md hover:bg-transparent hover:text-blue-700 font-semibold"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;Iniciar</button>
                 </div>
-            </section>
-
+            </div>
         </form>
-
     </main>
-    
-c
 
 </body>
 </html>
 <!--
     Se me revuleve el estómago tan solo pensar en cómo sería mi vida si nos hubiésemos conocido ese maravilloso dia.Creo que no seria feliz sin ti 
-
 -->
