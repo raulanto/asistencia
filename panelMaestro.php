@@ -1,51 +1,28 @@
-<?php     
-    session_start();
-    if(!$_SESSION['logueado']==true){
-        header("Location:index.php");
-    } 
+<!--
+    Panel Maestro
+        -Datos del maestro
+        -Materia
+        -Asistencia
 
-?>
-
-
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Grupos</title>
-</head>
-
-<body class="bg-gray-900">
+-->
     <!--Cabezera de la pagina -->
-    <header>
-        <nav class="bg-gray-800 ">
-            <div class="hidden sm:ml-6 sm:block p-2">
-                <div class="flex space-x-4">
-                    <a href="#"
-                        class="bg-gray-900 text-white rounded-md p-3 text-xl font-bold hover:bg-gray-700 hover:text-white	"
-                        aria-current="page">Sistema de Asistencia </a>
-
-                        <a href="close.php"
-                        class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md p-3 text-lg font-medium">Salir</a>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-
-    <main class="container m-auto text-center">
-        <?php  
+    <?php  
         require_once ('BD/conection.php');
-        require_once('usuario.php');
-        $ID = $_GET['ID'];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $ID = $_GET['ID'];
+            $CLAVEMAESTRO = $_GET['ID'];
+          } else {
+            echo 'no se esta usando';
+          }
         $results = "SELECT ID,nombre,clave FROM asistenciaalumnos.maestro WHERE fk_usuario='$ID'";
         $resultados= mysqli_query($conexion, $results);
 
 
     ?>
+    <?php include("header.php"); ?>
+    <main class="container m-auto text-center  h-screen ">
+
         <section class="container px-4 mx-auto">
             <div class="flex flex-col mt-6">
                 <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -107,19 +84,12 @@ while ($columna = mysqli_fetch_array($resultados)) {
 
         <section class="m-5">
             <?php
-            echo '<a href="panelMateria.php?ID=' . $ID . '" class="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-3 py-2 text-xl font-medium m-3">Materia</a>';
+            echo '<a href="panelMateria.php?ID=' . $ID . '" class="bg-orange-500  hover:bg-orange-600 text-white rounded-full px-3 py-2 text-xl font-medium m-3">Materia</a>';
             echo '<a href="panelMateriasAsistencia.php?ID=' . $ID . '" class="bg-sky-500 hover:bg-sky-600 text-white rounded-full px-3 py-2 text-xl font-medium m-3">Asistencias</a>';
+            echo '<a href="asistenciaTomar.php?ID=' . $ID . '" class="bg-purple-500 hover:bg-purple-600 text-white rounded-full px-3 py-2 text-xl font-medium m-3">Tomar Asistencia</a>';
             ?>
         </section>
     </main>
-
-
-    <footer class="flex justify-center m-auto bg-gray-800 text-center h-16 fixed bottom-0 left-0 right-0  ">
-        <div class=" self-center placeholder:p-4 text-center text-neutral-700 dark:text-neutral-200">
-            <a class=" dark:text-neutral-200 " href="">© 2023 Copyright:Raulanto</a>
-        </div>
-    </footer>
-
-</body>
-
-</html>
+    <!--Pie de pagina-->
+    <?php include("footer.php"); ?>
+    
