@@ -36,11 +36,11 @@
                 <hr class="mt-3">
                 <div class="mt-3">
                     <label for="username" class="block text-base mb-2">Usuario</label>
-                    <input type="text" id="username" name="username" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md" placeholder="Usuario..." />
+                    <input required type="text" id="username" name="username" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md" placeholder="Usuario..." />
                 </div>
                 <div class="mt-3">
                     <label for="password" class="block text-base mb-2">Contraseña</label>
-                    <input type="password" id="password" name="password" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md" placeholder="Contraseña..." />
+                    <input required type="password" id="password" name="password" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md" placeholder="Contraseña..." />
                 </div>
                 <div class="mt-5">
                     <button type="submit" class="border-2 border-blue-700 bg-blue-700 text-white py-1 w-full rounded-md hover:bg-transparent hover:text-blue-700 font-semibold"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;Iniciar</button>

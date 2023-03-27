@@ -17,10 +17,11 @@ session_start();
         } 
         if($user = mysqli_fetch_assoc($consulta)) {
             $_SESSION['logueado'] = true;
-            header("Location: panelMaestro.php?ID=".$user['ID']);
+            $CLAVEMAESTRO=$user['ID'];
+            header("Location: panelMaestro.php?ID=".$CLAVEMAESTRO);
             exit;
         }else {
-            header("Location: index.php");
+            header("Location: incorrecto.php");
         }
     }
 
