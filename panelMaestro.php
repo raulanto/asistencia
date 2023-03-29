@@ -15,7 +15,7 @@
           } else {
             echo 'no se esta usando';
           }
-        $results = "SELECT ID,nombre,clave FROM asistenciaalumnos.maestro WHERE fk_usuario='$ID'";
+        $results = "SELECT ID,nombre,clave FROM asistenciaalumnos.maestro WHERE fk_usuario='$CLAVEMAESTRO'";
         $resultados= mysqli_query($conexion, $results);
 
 
@@ -86,7 +86,7 @@ while ($columna = mysqli_fetch_array($resultados)) {
             <?php
             echo '<a href="panelMateria.php?ID=' . $ID . '" class="bg-orange-500  hover:bg-orange-600 text-white rounded-full px-3 py-2 text-xl font-medium m-3">Materia</a>';
             echo '<a href="panelMateriasAsistencia.php?ID=' . $ID . '" class="bg-sky-500 hover:bg-sky-600 text-white rounded-full px-3 py-2 text-xl font-medium m-3">Asistencias</a>';
-            echo '<a href="asistenciaTomar.php?ID=' . $ID . '" class="bg-purple-500 hover:bg-purple-600 text-white rounded-full px-3 py-2 text-xl font-medium m-3">Tomar Asistencia</a>';
+            
             ?>
         </section>
     </main>

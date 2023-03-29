@@ -41,8 +41,9 @@ $var_grupo = $_GET['ID_listagrupo'];
 
         <div class="form-container">
             <div class="form-floating mb-3">
-            <input type="text" class="form-control form-control-sm" name="usuario" id="floatingInput">
+            <input type="text" class="form-control form-control-sm" name="Codigo" id="floatingInput">
                 <label class="text-center" for="floatingInput">Codigo</label>
+                <button onclick="">Generar</button>
             </div>
             <div class="form-floating mb-3">
             <input type="datetime-local" class="form-control form-control-sm" name="da" id="floatingPassword" placeholder="Contraseña">
