@@ -6,8 +6,11 @@
 
 -->
     <!--Cabezera de la pagina -->
+    <?php
+    $nombre_archivo = basename(__FILE__);
+    include("../plantillas/header.php"); ?>
     <?php  
-        require_once ('BD/conection.php');
+        require_once ('../BD/conection.php');
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $ID = $_GET['ID'];
@@ -15,12 +18,11 @@
           } else {
             echo 'no se esta usando';
           }
-        $results = "SELECT ID,nombre,clave FROM asistenciaalumnos.maestro WHERE fk_usuario='$CLAVEMAESTRO'";
+        $results = "SELECT ID,nombre,clave FROM maestro WHERE fk_usuario='$CLAVEMAESTRO'";
         $resultados= mysqli_query($conexion, $results);
 
 
     ?>
-    <?php include("header.php"); ?>
     <main class="container m-auto text-center  h-screen ">
 
         <section class="container px-4 mx-auto">
@@ -91,5 +93,5 @@ while ($columna = mysqli_fetch_array($resultados)) {
         </section>
     </main>
     <!--Pie de pagina-->
-    <?php include("footer.php"); ?>
+    <?php include("../plantillas/footer.php"); ?>
     

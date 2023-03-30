@@ -1,28 +1,27 @@
-<?php include("header.php"); ?>
+<?php     $nombre_archivo = basename(__FILE__);
+ include("../plantillas/header.php"); ?>
 
 
 
     <main class="class="container m-auto  h-full">
         <?php  
-        require_once ('BD/conection.php');
+        require_once ('../BD/conection.php');
         if (isset($_GET['ID'])) {
             $ID = $_GET['ID'];
             $results = "SELECT
-            g.ID,
-            g.clave,
-            m.nombre AS materia,
-            p.nombre AS periodo,
-            c.nombre AS carrera,
-            p.ID AS id_periodo,
-            maestro.nombre AS nombreM 
+            listagrupo.ID ,
+            grupo.clave,
+            materia.nombre AS materia,
+            periodo.nombre AS periodo,
+            maestro.nombre AS maestro 
         FROM
-            grupo AS g
-            INNER JOIN materia AS m ON g.fk_materia = m.ID
-            INNER JOIN periodo AS p ON g.fk_periodo = p.ID
-            INNER JOIN carrera AS c ON g.fk_carrera = c.ID
-            INNER JOIN maestro ON g.fk_maestro = maestro.ID 
+            listagrupo
+            INNER JOIN grupo ON listagrupo.fk_grupo = grupo.ID
+            INNER JOIN materia ON grupo.fk_materia = materia.ID
+            INNER JOIN periodo ON grupo.fk_periodo = periodo.ID
+            INNER JOIN maestro ON grupo.fk_maestro = maestro.ID 
         WHERE
-            g.fk_maestro =  '$ID'";
+            listagrupo.fk_estudiante = '$ID'";
             $resultados= mysqli_query($conexion, $results);
         } else {
             echo "El parámetro ID no está definido";
@@ -31,8 +30,7 @@
 
 
     ?>
-        <section class="container px-4 mx-auto ">
-        <button onclick="history.back()" class="text-center mt-5 px-3 w-34 border-2 border-red-700 bg-red-700 text-white py-1  rounded-md hover:bg-transparent hover:text-red-700 font-semibold">Regresar</button>
+        <section class="container px-4 mx-auto h-screen">
             <div class="flex flex-col mt-6">
                 <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -47,7 +45,7 @@
 
                                         <th scope="col"
                                             class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            clave
+                                            Clave
                                         </th>
 
                                         <th scope="col"
@@ -60,15 +58,15 @@
 
                                         <th scope="col"
                                             class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Carrera</th>
-
-
-                                        <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Grupo</th>
+                                            Maestro
+                                        </th>
                                             <th scope="col"
                                             class="px-4 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 dark:text-gray-400">
                                             Tomar Asistencia</th>
+                                            </th>
+                                            <th scope="col"
+                                            class="px-4 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 dark:text-gray-400">
+                                            Mostrar Asistencias</th>
 
                                     </tr>
 
@@ -100,17 +98,18 @@ while ($columna = mysqli_fetch_array($resultados)) {
             </td>
             <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
             <div>
-                <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['carrera'] . '</h2>
+                <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['maestro'] . '</h2>
             </div>
         </td>
+
         <td class="px-12 py-4 text-sm font-medium whitespace-nowrap">
-            <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 ">
-                <a href="panelLista.php?ID=' . $columna['ID'] . '">Lista</a>
-            </div>
-        </td>
-        <td class="px-12 py-4 text-sm font-medium whitespace-nowrap">
-        <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 ">
-            <a href="asistenciaTomar.php?IDgrupo=' . $columna['ID'] . '&IDmaestro='.$ID.'&IDperiodo='.$columna['id_periodo'].  '&periodo='.$columna['periodo'] .'&materia='. $columna['materia'].'&nombremaestro='.$columna['nombreM'].'">Tomar asistencia</a>
+        <div class=" inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 ">
+            <a href="tomarAsistenciaEstudiante.php?ID='.$columna['ID'].'&materia='.$columna['materia'].'&estudiante='.$ID.'">Tomar asistencia</a>
+        </div>
+    </td>
+    <td class="px-12 py-4 text-sm font-medium whitespace-nowrap">
+        <div class=" inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 ">
+            <a href="mostrarAsistencia.php?ID='.$columna['ID'].'&materia='.$columna['materia'].'&estudiante='.$ID.'">Lista</a>
         </div>
     </td>';
 
@@ -128,4 +127,4 @@ while ($columna = mysqli_fetch_array($resultados)) {
 
     </main>
 
-    <?php include("footer.php"); ?>
+    <?php include("../plantillas/footer.php"); ?>

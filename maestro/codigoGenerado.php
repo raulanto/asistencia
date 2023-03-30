@@ -1,5 +1,8 @@
 
-<?php include("header.php"); ?>
+<?php 
+    $nombre_archivo = basename(__FILE__);
+
+include("../plantillas/header.php"); ?>
 <?php
 
 //guardar codigo en la base de datos
@@ -10,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $codigo = $_GET['codigo'];
     $fecha=$_GET['fecha'];
 
-    require_once ('BD/conection.php');
+    require_once ('../BD/conection.php');
     
     $results = "INSERT INTO `codigo`(`codigo`, `fechahora`, `fk_grupo`, `fk_periodo`, `fk_maestro`) VALUES ( '$codigo', '$fecha', '$IDGRUPO', '$IDPERIODO', '$IDMAESTRO')";
     $resultados= mysqli_query($conexion, $results);
@@ -38,4 +41,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     
 </main>
 
-<?php include("footer.php"); ?>
+<?php include("../plantillas/footer.php"); ?>

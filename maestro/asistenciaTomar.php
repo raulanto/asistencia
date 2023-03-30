@@ -1,4 +1,7 @@
-<?php include("header.php"); ?>
+<?php 
+    $nombre_archivo = basename(__FILE__);
+
+include("../plantillas/header.php"); ?>
 
 
 <?php
@@ -42,8 +45,6 @@ function generarCodigoAleatorio() {
     <!--
                Boton regresar
             -->
-    <button onclick="history.back()"
-        class="text-center mt-5 px-3 w-34 border-2 border-red-700 bg-red-700 text-white py-1  rounded-md hover:bg-transparent hover:text-red-700 font-semibold">Regresar</button>
     <!--
                formulario Para generar el codigo de asistencia
             -->
@@ -98,4 +99,4 @@ function generarCodigoAleatorio() {
     </form>
 </main>
 
-<?php include("footer.php"); ?>
+<?php include("../plantillas/footer.php"); ?>
