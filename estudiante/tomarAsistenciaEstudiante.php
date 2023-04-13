@@ -1,6 +1,8 @@
 
-<?php     $nombre_archivo = basename(__FILE__);
-include("../plantillas/header.php"); ?>
+<?php     
+$nombre_archivo = basename(__FILE__);
+include("../plantillas/header.php"); 
+?>
 
 
 <?php

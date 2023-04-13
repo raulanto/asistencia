@@ -1,6 +1,10 @@
 
-<?php     $nombre_archivo = basename(__FILE__);
-include("../plantillas/header.php"); ?>
+<?php     
+$nombre_archivo = basename(__FILE__);
+include("../plantillas/header.php"); 
+?>
+
+
 <?php
 
 // guardar codigo en la base de datos
@@ -35,10 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
 
  }
-
-
-// INSERT INTO `codigo`(`codigo`, `fechahora`, `fk_grupo`, `fk_periodo`, `fk_maestro`) VALUES ( 'sdfs', 'werw', 4, 4, 4)
-
 ?>
 <main class="container m-auto  h-screen">
    <section class="flex justify-center items-center h-screen">

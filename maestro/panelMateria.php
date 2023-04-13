@@ -5,7 +5,8 @@ include("../plantillas/header.php"); ?>
 
 
 
-    <main class="class="container m-auto  h-full">
+    <main class="class=container m-auto  h-screen">
+
         <?php  
         require_once ('../BD/conection.php');
         if (isset($_GET['ID'])) {
@@ -43,13 +44,13 @@ include("../plantillas/header.php"); ?>
                                 <thead class="bg-gray-50 dark:bg-gray-800">
                                     <tr>
                                         <th scope="col"
-                                            class="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            class="min-w-fit px-5 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                             ID
                                         </th>
 
                                         <th scope="col"
                                             class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            clave
+                                            Clave
                                         </th>
 
                                         <th scope="col"
@@ -64,13 +65,9 @@ include("../plantillas/header.php"); ?>
                                             class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                             Carrera</th>
 
-
-                                        <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Grupo</th>
                                             <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Tomar Asistencia</th>
+                                            class="px-4 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 dark:text-gray-400"><i class="fa-sharp fa-solid fa-pencil"></i>
+                                            Opciones</th>
 
                                     </tr>
 
@@ -106,18 +103,17 @@ while ($columna = mysqli_fetch_array($resultados)) {
             <h2 class="text-left font-medium text-gray-800 dark:text-white">{$columna['carrera']}</h2>
         </div>
     </td>
+
     <td class="px-12 py-4 text-sm font-medium whitespace-nowrap">
-        <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 ">
+        <div class="inline px-3 py-1 text-sm  rounded-l-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 font-semibold"><i class=" fa-solid fa-address-book"></i>
             <a href="panelLista.php?ID={$columna['ID']}">Lista</a>
         </div>
-    </td>
-    <td class="px-12 py-4 text-sm font-medium whitespace-nowrap">
-        <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 ">
-            <a href="asistenciaTomar.php?IDgrupo={$columna['ID']}&IDmaestro={$ID}&IDperiodo={$columna['id_periodo']}&periodo={$columna['periodo']}&materia={$columna['materia']}&nombremaestro={$columna['nombreM']}">Tomar asistencia</a>
+        <div class="inline px-3 py-1 text-sm  rounded-r-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 font-semibold"><i class="fa-solid fa-list"></i>
+            <a href="asistenciaTomar.php?IDgrupo={$columna['ID']}&IDmaestro={$ID}&IDperiodo={$columna['id_periodo']}&periodo={$columna['periodo']}&materia={$columna['materia']}&nombremaestro={$columna['nombreM']}">Tomar Asistencia</a>
         </div>
     </td>
     HTML;
-
+    
 
     ?>
                                     </tr>

@@ -40,7 +40,7 @@ include("../plantillas/header.php"); ?>
                                             Periodo</th>
 
                                         <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            class="px-4 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 dark:text-gray-400">
                                             Asistencia</th>
                                     </tr>
 
@@ -48,32 +48,31 @@ include("../plantillas/header.php"); ?>
                                 <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                                     <tr>
 
-                                        <?php
-while ($columna = mysqli_fetch_array($resultados)) {
-            echo '<td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-                <div>
-                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['ID'] . '</h2>
-                </div>
-            </td>
-            </td>
-            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-                <div>
-                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['materia'] . '</h2>
-                </div>
-            </td>
-            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-                <div>
-                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['periodo'] . '</h2>
-                </div>
-            </td>
-        <td class="px-12 py-4 text-sm font-medium whitespace-nowrap">
-            <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 ">
-                <a href="panelAsistencia.php?ID=' . $columna['ID'] . '">Lista</a>
+                                    <?php while ($columna = mysqli_fetch_array($resultados)): ?>
+    <tr>
+        <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+            <div>
+                <h2 class="text-left font-medium text-gray-800 dark:text-white"><?= $columna['ID'] ?></h2>
             </div>
-        </td>';
-    ?>
-                                    </tr>
-                                    <?php }?>
+        </td>
+        <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+            <div>
+                <h2 class="text-left font-medium text-gray-800 dark:text-white"><?= $columna['materia'] ?></h2>
+            </div>
+        </td>
+        <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+            <div>
+                <h2 class="text-left font-medium text-gray-800 dark:text-white"><?= $columna['periodo'] ?></h2>
+            </div>
+        </td>
+        <td class="px-12 py-4 text-sm font-medium whitespace-nowrap">
+            <div class="inline px-3 py-1 font-normal rounded-full text-center text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700">
+                <a class="text-center" href="panelAsistencia.php?ID=<?= $columna['ID'] ?>">Lista</a>
+            </div>
+        </td>
+    </tr>
+<?php endwhile; ?>
+
                                 </tbody>
                             </table>
                         </div>

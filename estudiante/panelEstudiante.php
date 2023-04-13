@@ -40,27 +40,28 @@
                                 <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                                     <tr>
 
-                                        <?php
+                                    <?php
 while ($columna = mysqli_fetch_array($resultados)) {
-            echo '<td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-                <div>
-                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['ID'] . '</h2>
-                </div>
-            </td>
-            
-            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-                <div>
-                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['nombre'] . '</h2>
-                </div>
-            </td>
-            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-                <div>
-                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['matricula'] . '</h2>
-                </div>
-            </td>';
-    ?>
-                                    </tr>
-                                    <?php }?>
+    echo '<td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+            <div>
+                <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['ID'] . '</h2>
+            </div>
+        </td>
+
+        <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+            <div>
+                <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['nombre'] . '</h2>
+            </div>
+        </td>
+        <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+            <div>
+                <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['matricula'] . '</h2>
+            </div>
+        </td>';
+?>
+</tr>
+<?php }?>
+
                                 </tbody>
                             </table>
                         </div>
@@ -68,12 +69,14 @@ while ($columna = mysqli_fetch_array($resultados)) {
                 </div>
             </div>
         </section>
-        <section class="m-5">
-            <?php
-            echo '<a href="panelMateriaEstudiante.php?ID=' . $ID . '" class="bg-orange-500  hover:bg-orange-600 text-white rounded-full px-3 py-2 text-xl font-medium m-3">Materia</a>';
-            echo '<a href="tomarAsistenciaEstudiante.php?ID=' . $ID . '" class="bg-sky-500 hover:bg-sky-600 text-white rounded-full px-3 py-2 text-xl font-medium m-3">Asistencias</a>';
+
+        <section class="min-w-fit flex p-4 m-4 rounded-lg bg-gray-900 border border-gray-500 ">
+            <h2 class="text-white font-bold text-lg mr-5">Opciones</h2>
+            <a href="<?php echo 'panelMateriaEstudiante.php?ID=' . $ID ;?>"
+                class="inline px-3 py-1 text-lg  rounded-l-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 font-semibold">Materia</a>
+            <a href="<?php echo 'tomarAsistenciaEstudiante.php?ID=' . $ID ?>"
+                class="inline px-3 py-1 text-lg  rounded-r-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 font-semibold">Asistencia</a>
             
-            ?>
         </section>
 
     </main>

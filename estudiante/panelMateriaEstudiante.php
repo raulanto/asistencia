@@ -39,7 +39,7 @@
                                 <thead class="bg-gray-50 dark:bg-gray-800">
                                     <tr>
                                         <th scope="col"
-                                            class="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            class=" w-5 px-5 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                             ID
                                         </th>
 
@@ -62,11 +62,10 @@
                                         </th>
                                             <th scope="col"
                                             class="px-4 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Tomar Asistencia</th>
+                                            
+                                            Opciones</th>
                                             </th>
-                                            <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Mostrar Asistencias</th>
+
 
                                     </tr>
 
@@ -74,48 +73,50 @@
                                 <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                                     <tr>
 
-                                        <?php
+                                    <?php
 while ($columna = mysqli_fetch_array($resultados)) {
-            echo '<td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-                <div>
-                    <h2 class="text-center font-medium text-gray-800 dark:text-white">' . $columna['ID'] . '</h2>
-                </div>
-            </td>
-            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-                <div>
-                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['clave'] . '</h2>
-                </div>
-            </td>
-            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-                <div>
-                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['materia'] . '</h2>
-                </div>
-            </td>
-            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-                <div>
-                    <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['periodo'] . '</h2>
-                </div>
-            </td>
-            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-            <div>
-                <h2 class="text-left font-medium text-gray-800 dark:text-white">' . $columna['maestro'] . '</h2>
-            </div>
-        </td>
-
-        <td class="px-12 py-4 text-sm font-medium whitespace-nowrap">
-        <div class=" inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 ">
-            <a href="tomarAsistenciaEstudiante.php?ID='.$columna['ID'].'&materia='.$columna['materia'].'&estudiante='.$ID.'">Tomar asistencia</a>
+    ?>
+    <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+        <div>
+            <h2 class="text-center font-medium text-gray-800 dark:text-white"><?= $columna['ID'] ?></h2>
         </div>
     </td>
-    <td class="px-12 py-4 text-sm font-medium whitespace-nowrap">
-        <div class=" inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 ">
-            <a href="mostrarAsistencia.php?ID='.$columna['ID'].'&materia='.$columna['materia'].'&estudiante='.$ID.'">Lista</a>
+    <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+        <div>
+            <h2 class="text-left font-medium text-gray-800 dark:text-white"><?= $columna['clave'] ?></h2>
         </div>
-    </td>';
+    </td>
+    <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+        <div>
+            <h2 class="text-left font-medium text-gray-800 dark:text-white"><?= $columna['materia'] ?></h2>
+        </div>
+    </td>
+    <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+        <div>
+            <h2 class="text-left font-medium text-gray-800 dark:text-white"><?= $columna['periodo'] ?></h2>
+        </div>
+    </td>
+    <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+        <div>
+            <h2 class="text-left font-medium text-gray-800 dark:text-white"><?= $columna['maestro'] ?></h2>
+        </div>
+    </td>
+    <td class="px-12 py-4 text-sm font-medium whitespace-nowrap flex justify-center">
+        <div class="inline px-3 py-1 text-sm  rounded-l-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 font-semibold">
+        <i class="fa-sharp fa-solid fa-pencil"></i>
+            <a href="tomarAsistenciaEstudiante.php?ID=<?= $columna['ID'] ?>&materia=<?= $columna['materia'] ?>&estudiante=<?= $ID ?>">Tomar asistencia</a>
+        </div>
+        <div class="inline px-3 py-1 text-sm  rounded-r-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 font-semibold">
+        <i class="fa-solid fa-eye"></i>
+            <a href="mostrarAsistencia.php?ID=<?= $columna['ID'] ?>&estudiante=<?= $ID ?>">Mostrar Asistencia</a>
+        </div>
+    </td>
+    <?php
+}
+?>
+</tr>
 
-    ?>
-                                    </tr>
-                                    <?php }?>
+                                
                                 </tbody>
                             </table>
                         </div>

@@ -1,36 +1,53 @@
-<?php
-$nombre_archivo = basename(__FILE__);
-include('../plantillas/header.php');
+<?php 
+    $nombre_archivo = basename(__FILE__);
+    include("../plantillas/header.php"); 
 ?>
 
+    <!-- Mostrar asistencia por fecha -->
+    <main class="container m-auto mt-3 h-full">
 <?php
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $IDAlUMNO = $_GET['IDalumno']; 
+        $IDGRUPO = $_GET['IDGRUPO']; 
+        $nombre = $_GET['nombre']; 
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $IDLISTAGRUPO = $_GET['ID']; 
-    $ID=$_GET['estudiante'];
-
-    require_once ('../BD/conection.php');
+        require_once ('../BD/conection.php');
         $results ="SELECT
-    asistencia.ID,    
-    asistencia.codigo, 
-    asistencia.fechahora,
-    asistencia.observacion 
+        asistencia.ID, 
+        asistencia.codigo, 
+        asistencia.fechahora, 
+        asistencia.observacion, 
+        listagrupo.fk_estudiante
     FROM
         asistencia
-        INNER JOIN listagrupo ON asistencia.fk_listagrupo = listagrupo.ID
-        INNER JOIN estudiante ON listagrupo.fk_estudiante = estudiante.ID 
+        INNER JOIN
+        listagrupo
+        ON 
+            asistencia.fk_listagrupo = listagrupo.ID
+        INNER JOIN
+        estudiante
+        ON 
+            listagrupo.fk_estudiante = estudiante.ID
     WHERE
-        listagrupo.fk_estudiante = '$ID' 
-        AND listagrupo.ID = '$IDLISTAGRUPO'";
+        listagrupo.fk_estudiante = '$IDAlUMNO'
+        AND listagrupo.fk_grupo = '$IDGRUPO'";
 
         $resultados= mysqli_query($conexion, $results);
 
- }
-
-
+        echo     '<div class="">
+        <div>
+            <div scope="col"
+                class="px-12 py-3.5 text-2xl text-center rtl:text-right text-white font-bold">
+                '.$nombre.
+            '</div>            
+        </div>
+    </div>';
+    }
 ?>
 
-<section class="container px-4 mx-auto w-full">
+
+   
+    <section class="container px-4 mx-auto">
     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="inline-block min-w-fit py-2 align-middle md:px-6 lg:px-8">
                         <div class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
@@ -103,4 +120,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $nombre_archivo = basename(__FILE__);
     include("../plantillas/footer.php"); 
 ?>
+
 

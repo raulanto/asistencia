@@ -1,7 +1,7 @@
 <?php 
-    $nombre_archivo = basename(__FILE__);
-
-include("../plantillas/header.php"); ?>
+$nombre_archivo = basename(__FILE__);
+include("../plantillas/header.php"); 
+?>
 
 
 <?php
@@ -42,12 +42,10 @@ function generarCodigoAleatorio() {
 
 
 <main class="">
+
     <!--
-               Boton regresar
-            -->
-    <!--
-               formulario Para generar el codigo de asistencia
-            -->
+        formulario Para generar el codigo de asistencia
+    -->
     <form class="flex justify-center items-center h-screen" action="codigoGenerado.php" method="get">
         <div class="w-96 p-3 shadow-lg bg-white rounded-md">
             <h1 class="text-4xl block text-center font-bold"> Tomar Asistencia</h1>
