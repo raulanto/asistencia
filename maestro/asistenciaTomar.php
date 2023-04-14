@@ -98,3 +98,4 @@ function generarCodigoAleatorio() {
 </main>
 
 <?php include("../plantillas/footer.php"); ?>
+
