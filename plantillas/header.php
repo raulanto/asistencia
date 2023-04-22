@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Estilos -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="../dist/output.css" rel="stylesheet">
 
     <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -34,7 +34,7 @@
                         <div>
                         <?php
                         
-
+                        //  Sirve para saber si esta en una pagina de inico  
                         if ($nombre_archivo != "panelMaestro.php" && $nombre_archivo != "panelEstudiante.php"  ) {
                             echo '                            <button onclick="history.back()"
                             class="text-red-300 hover:bg-red-700 hover:text-white rounded-md p-3 text-lg font-medium">Regresar</button>';

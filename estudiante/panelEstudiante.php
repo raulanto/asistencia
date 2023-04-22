@@ -34,7 +34,7 @@
                                             Nombre</th>
                                         <th scope="col"
                                             class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Asistencia</th>
+                                            Matricula</th>
 
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
@@ -59,7 +59,7 @@ while ($columna = mysqli_fetch_array($resultados)) {
             </div>
         </td>';
 ?>
-</tr>
+        </tr>
 <?php }?>
 
                                 </tbody>
@@ -74,7 +74,7 @@ while ($columna = mysqli_fetch_array($resultados)) {
             <h2 class="text-white font-bold text-lg mr-5">Opciones</h2>
             <a href="<?php echo 'panelMateriaEstudiante.php?ID=' . $ID ;?>"
                 class="inline px-3 py-1 text-lg  rounded-l-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 font-semibold">Materia</a>
-            <a href="<?php echo 'tomarAsistenciaEstudiante.php?ID=' . $ID ?>"
+            <a href="<?php echo 'tomarAsistenciaEstudiante.php' ?>"
                 class="inline px-3 py-1 text-lg  rounded-r-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 font-semibold">Asistencia</a>
             
         </section>
