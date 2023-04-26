@@ -15,6 +15,8 @@ if (isset($_GET['ID'])) {
     $IDLISTAGRUPO = $_GET['ID']; 
     $ID=$_GET['estudiante'];
     $materia=$_GET['materia'];
+    $MATERIAID=$_GET['materiaid'];
+    
 
     echo '<main class="">
     <!--
@@ -38,6 +40,12 @@ if (isset($_GET['ID'])) {
                 <input required type="text" id="Codigo" name="codigo" type="hidden"
                     class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md"
                     placeholder="codigo..." " />
+            </div>
+                <div class="mt-3">
+                <label for="Materia" class="block text-base mb-2">Materia</label>
+                <input required type="number" id="materiaid" name="materiaid" type="hidden"
+                    class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md"
+                    placeholder="codigo..." " readonly value="'.$MATERIAID.'" />
             </div>
             <div class="mt-3">
                 <label for="grupo" class="block text-base mb-2">Observacion</label>

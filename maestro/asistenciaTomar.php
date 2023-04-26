@@ -36,7 +36,12 @@ function generarCodigoAleatorio() {
   }
   $codigo=generarCodigoAleatorio();
 
-  $fecha=date('Y-m-d\TH:i');
+  function obtener_fecha_hora_actual() {
+    date_default_timezone_set('America/Mexico_City'); // ajusta la zona horaria a la de México
+    $fecha_hora_actual = date('Y-m-d '); // formato: AAAA-MM-DD HH:MM:SS
+    return $fecha_hora_actual;
+  }
+  $fecha = obtener_fecha_hora_actual();  
 
 ?>
 
