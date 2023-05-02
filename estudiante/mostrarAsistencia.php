@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 ?>
 
-<section class="container px-4 mx-auto w-full">
+<section class="container px-4 mx-auto w-full my-4">
     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="inline-block min-w-fit py-2 align-middle md:px-6 lg:px-8">
                         <div class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">

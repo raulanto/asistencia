@@ -48,7 +48,7 @@ include("../plantillas/header.php"); ?>
                                 <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                                     <tr>
 
-                                    <?php while ($columna = mysqli_fetch_array($resultados)): ?>
+<?php while ($columna = mysqli_fetch_array($resultados)): ?>
     <tr>
         <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
             <div>
@@ -65,12 +65,14 @@ include("../plantillas/header.php"); ?>
                 <h2 class="text-left font-medium text-gray-800 dark:text-white"><?= $columna['periodo'] ?></h2>
             </div>
         </td>
-        <td class="px-12 py-4 text-sm font-medium whitespace-nowrap">
-            <div class="inline px-3 py-1 font-normal rounded-full text-center text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700">
-                <a class="text-center" href="panelAsistencia.php?ID=<?= $columna['ID'] ?>">Lista</a>
-            </div>
+        <td class=" flex justify-center px-12 py-4 font-medium whitespace-nowrap text-sm">
+
+                <a class="inline px-3 py-1   rounded-l-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 font-semibold" href="panelAsistencia.php?ID=<?= $columna['ID'] ?>">Lista</a>
+            
+                <a class="inline px-3 py-1   rounded-r-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800 hover:dark:bg-gray-700 font-semibold" href="CodigosAsistencia.php?ID=<?= $columna['ID'] ?>">Codigo</a>
         </td>
     </tr>
+
 <?php endwhile; ?>
 
                                 </tbody>

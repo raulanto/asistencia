@@ -36,13 +36,6 @@ function generarCodigoAleatorio() {
   }
   $codigo=generarCodigoAleatorio();
 
-  function obtener_fecha_hora_actual() {
-    date_default_timezone_set('America/Mexico_City'); // ajusta la zona horaria a la de México
-    $fecha_hora_actual = date('Y-m-d '); // formato: AAAA-MM-DD HH:MM:SS
-    return $fecha_hora_actual;
-  }
-  $fecha = obtener_fecha_hora_actual();  
-
 ?>
 
 
@@ -51,7 +44,7 @@ function generarCodigoAleatorio() {
     <!--
         formulario Para generar el codigo de asistencia
     -->
-    <form class="flex justify-center items-center h-screen" action="codigoGenerado.php" method="get">
+    <form class="flex justify-center items-center h-screen" action="ingresarCodigo.php" method="get">
         <div class="w-96 p-3 shadow-lg bg-white rounded-md">
             <h1 class="text-4xl block text-center font-bold"> Tomar Asistencia</h1>
             <h3 class="text-2xl block text-center font-bold">
@@ -66,9 +59,10 @@ function generarCodigoAleatorio() {
             </div>
             <div class="mt-3">
                 <label for="fecha" class="block text-base mb-2">Fecha</label>
-                <input required type="datetime-local" id="fecha" name="fecha" type="hidden"
+                <input required type="date" id="fecha" name="fecha"
                     class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md"
-                    value="<?php echo $fecha;  ?>" />
+                    value="<?php echo $fecha; ?>" />
+
             </div>
             <div class="mt-3">
                 <label for="grupo" class="block text-base mb-2">Grupo</label>

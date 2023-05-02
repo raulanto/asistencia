@@ -48,6 +48,13 @@ if (isset($_GET['ID'])) {
                     placeholder="codigo..." " readonly value="'.$MATERIAID.'" />
             </div>
             <div class="mt-3">
+                <label for="fecha" class="block text-base mb-2">Fecha</label>
+                <input required type="date" id="fecha" name="fecha"
+                    class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md"
+                     />
+
+            </div>
+            <div class="mt-3">
                 <label for="grupo" class="block text-base mb-2">Observacion</label>
                 <input required type="text" id="observacion" name="observacion" type="hidden"
                     class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md"
