@@ -38,3 +38,35 @@ como mostrar los resultados
   $resultado->free();
   $mysqli->close();
 ```
+
+```sql
+CREATE DEFINER=`root`@`localhost` PROCEDURE `periodo_maestro`(in idmaestro int)
+BEGIN
+	SELECT
+	grupo.clave, 
+	grupo.ID, 
+	materia.nombre AS materia, 
+	materia.clave AS clavemateria, 
+	periodo.nombre AS periodo, 
+	COUNT(listagrupo.fk_estudiante)
+FROM
+	grupo
+	INNER JOIN
+	materia
+	ON 
+		grupo.fk_materia = materia.ID
+	INNER JOIN
+	periodo
+	ON 
+		grupo.fk_periodo = periodo.ID
+	INNER JOIN
+	listagrupo
+	ON 
+		grupo.ID = listagrupo.fk_grupo
+WHERE
+	grupo.fk_maestro = idmaestro
+GROUP BY
+	materia.nombre;
+
+END
+```
