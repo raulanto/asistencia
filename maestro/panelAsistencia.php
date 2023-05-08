@@ -9,17 +9,8 @@ include("../plantillas/header.php"); ?>
         require_once ('../BD/conection.php');
         if (isset($_GET['ID'])) {
             $ID = $_GET['ID'];
-            $results = "SELECT materia.nombre AS materia,
-            estudiante.ID,
-            CONCAT( estudiante.nombre, ' ', estudiante.ape_paterno, ' ', ape_materno ) AS nombre,
-            COUNT( listagrupo.fk_estudiante ) AS Asistencias
-            FROM asistencia INNER JOIN listagrupo ON asistencia.fk_listagrupo = listagrupo.ID 
-            INNER JOIN estudiante ON listagrupo.fk_estudiante = estudiante.ID 
-            INNER JOIN grupo ON listagrupo.fk_grupo = grupo.ID INNER JOIN materia ON grupo.fk_materia = materia.ID 
-        WHERE
-            grupo.ID = '$ID' 
-        GROUP BY
-            estudiante.ID";
+            // implementacion del call
+            $results = "call asistenciaalumnos.panel_asistencia('$ID');";
             $resultados= mysqli_query($conexion, $results);
         } else {
             echo "El parámetro ID no está definido";
